@@ -3,7 +3,8 @@
 #include "./table_parser.hpp"
 #include "./outputFile.hpp"
 
-void syntax_parser(std::string file_path) {
+void syntax_parser(std::string file_path)
+{
     std::string input_string = inputFile(file_path);
     std::string formatted_string = deleteComments(input_string);
 
@@ -11,7 +12,8 @@ void syntax_parser(std::string file_path) {
 
     Syntax_Parser syntax_parser = Syntax_Parser();
 
-    for (int i = 0; i < string_vector.size(); i++) {
+    for (int i = 0; i < string_vector.size(); i++)
+    {
         syntax_parser.parse(string_vector[i]);
     }
 
