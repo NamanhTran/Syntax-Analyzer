@@ -103,12 +103,14 @@ Abbreviated_Table::Abbreviated_Table() {
         {"T", "Term"},
         {"T'", "Term Prime"},
         {"F", "Factor"},
+        {"epsil", "Epsilon"}
     };
 }
 
 std::string Abbreviated_Table::get_expanded(std::string symbol) {
+    std::cout << "Expanding: " << symbol << std::endl;
     if (this->abbreviatedTable.find(symbol) == this->abbreviatedTable.end()) {
-        return NULL;
+        return symbol;
     }
 
     return this->abbreviatedTable[symbol];
