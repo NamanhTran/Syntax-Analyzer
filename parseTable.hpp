@@ -108,7 +108,6 @@ Abbreviated_Table::Abbreviated_Table() {
 }
 
 std::string Abbreviated_Table::get_expanded(std::string symbol) {
-    std::cout << "Expanding: " << symbol << std::endl;
     if (this->abbreviatedTable.find(symbol) == this->abbreviatedTable.end()) {
         return symbol;
     }

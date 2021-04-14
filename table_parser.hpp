@@ -139,7 +139,6 @@ std::vector<std::string> lines_into_vector(std::string input_string) {
         else {
             if (temp_string.length() > 0) {
                 string_vector.push_back(temp_string);
-                std::cout << temp_string << std::endl;
                 temp_string.clear();
             }
         }
