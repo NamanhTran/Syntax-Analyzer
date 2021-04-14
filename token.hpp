@@ -5,7 +5,7 @@
 //need to get a processed string into this file later for the lexical analyzer
 
 std::vector<std::string> tokenize(std::string token_string) {
-    std::set<std::string> operator_set = {"+", "-", "/", "%", "*" ,"="};
+    std::set<std::string> operator_set = {"+", "-", "/", "%", "*" ,"=", "(", ")"};
     
     std::vector<std::string> tokens;
 
@@ -18,8 +18,11 @@ std::vector<std::string> tokenize(std::string token_string) {
         } 
         
         else if (operator_set.find(std::string(1, token_string[i])) != operator_set.end()) {
-            tokens.push_back("id");
-            temp_token.clear();
+            if (!temp_token.empty()) {
+                tokens.push_back("id");
+                temp_token.clear();
+            }
+            
             tokens.push_back(std::string(1, token_string[i]));
         } 
         
