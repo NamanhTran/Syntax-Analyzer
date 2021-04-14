@@ -18,6 +18,7 @@ class Syntax_Parser {
         std::set<std::string> non_terminal_set;
 
         Parse_Table parse_table = Parse_Table();
+        Abbreviated_Table abbreviated_table = Abbreviated_Table();
 
         std::vector<std::pair<std::string, std::vector<std::string>>> production_rules_pairs;
 
@@ -96,7 +97,7 @@ void Syntax_Parser::parse(std::string input_string) {
                 }
 
                 // Push production rule used for the token
-                temp_production_rules.second.push_back(symbol + " -> " + vector_to_string(new_symbols));
+                temp_production_rules.second.push_back("<" + this->abbreviated_table.get_expanded(symbol) + ">" + " -> " + vector_to_string(new_symbols));
 
                 symbol = syntax_parser_stack.top();
             }
@@ -117,9 +118,10 @@ std::vector<std::pair<std::string, std::vector<std::string>>> Syntax_Parser::get
 
 std::string vector_to_string(std::vector<std::string> vector) {
     std::string vector_string;
+    Abbreviated_Table abbreviated_table = Abbreviated_Table();
 
     for (int i = 0; i < vector.size(); i++) {
-        vector_string.append(vector[i]);
+        vector_string.append("<" + abbreviated_table.get_expanded(vector[i]) + ">");
     }
 
     return vector_string;
